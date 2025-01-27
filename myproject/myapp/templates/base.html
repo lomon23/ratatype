@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Main Page{% endblock %}</title>
+
+    <!-- Підключення CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+</head>
+
+<body>
+    <!-- Хедер -->
+    {% include 'header.html' %}
+
+    <!-- Контент -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Футер -->
+    {% include 'footer.html' %}
+
+    <!-- Підключення JavaScript -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bookMarklet.js' %}"></script>
+</body>
+
+</html>

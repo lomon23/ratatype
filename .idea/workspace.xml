@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cc06021-b31a-4732-adc1-29547469046a" name="Changes" comment="" />
+    <list default="true" id="7cc06021-b31a-4732-adc1-29547469046a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myapp/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myapp/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myapp/static/css/test.css" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myapp/static/css/test.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myapp/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myapp/static/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myapp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myapp/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myapp/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myapp/templates/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myproject/myproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/myproject/settings.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -38,6 +50,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Python.structure.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "rata__with__django"

@@ -1,69 +1,123 @@
-if (window.location.pathname.includes('test')) {  // Замість 'test.html', перевіряємо тільки 'test'
-  const urlParams = new URLSearchParams(window.location.search);
-  const text = urlParams.get("text") || "HELLOWORLD"; // За замовчуванням "HELLOWORLD"
+if (window.location.pathname.includes('test')) {
+    console.log("Тест почався");
 
-  let currentIndex = 0;
-  let errorCount = 0;
-  let correctCount = 0;
-  let startTime = null;
-  let timerInterval = null;
+    const urlParams = new URLSearchParams(window.location.search);
+    const text = urlParams.get("text") || "HELLOWORLD"; // Текст за замовчуванням
+    let currentIndex = 0;
+    let errorCount = 0;
+    let typedCharacters = []; // Це масив для всіх введених символів (правильних і неправильних)
+    let startTime = null;
+    let timerInterval = null;
+    let isTestFinished = false;
+    const maxTime = 30; // Фіксований час у секундах
 
-  const textContainer = document.getElementById("text-container");
-  const errorCountSpan = document.getElementById("error-count");
-  const accuracySpan = document.getElementById("accuracy");
-  const timerSpan = document.getElementById("timer");
+    const textContainer = document.getElementById("text-container");
+    const errorCountSpan = document.getElementById("error-count");
+    const accuracySpan = document.getElementById("accuracy");
+    const timerSpan = document.getElementById("timer");
 
-  text.split("").forEach((char, index) => {
-    const span = document.createElement("span");
-    span.textContent = char;
-    span.id = `letter-${index}`;
-    span.style.color = index === currentIndex ? "green" : "black";
-    textContainer.appendChild(span);
-  });
-
-  document.addEventListener("keydown", (event) => {
-    const key = event.key;
-    const currentLetter = text[currentIndex];
-
-    if (startTime === null) {
-      startTime = new Date();
-      timerInterval = setInterval(updateTimer, 100);
-    }
-
-    if (key.toUpperCase() === currentLetter.toUpperCase()) {
-      const span = document.getElementById(`letter-${currentIndex}`);
-      span.style.visibility = "hidden";
-      currentIndex++;
-      correctCount++;
-
-      if (currentIndex === text.length) {
-        clearInterval(timerInterval);
-        alert("Congratulations! You typed all the letters!");
-      } else {
-        const nextSpan = document.getElementById(`letter-${currentIndex}`);
-        nextSpan.style.color = "green";
-      }
-
-      updateAccuracy();
-    } else {
-      const span = document.getElementById(`letter-${currentIndex}`);
-      errorCount++;
-      errorCountSpan.textContent = errorCount;
-
-      span.style.color = "red";
-      setTimeout(() => {
+    // Ініціалізація тексту
+    text.split("").forEach((char, index) => {
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.id = `letter-${index}`;
         span.style.color = "black";
-      }, 300);
+        textContainer.appendChild(span);
+    });
+
+    // Ініціалізація таймера (відлік від 30 до 0)
+    let timeLeft = maxTime;
+    timerSpan.textContent = timeLeft;
+
+    document.addEventListener("keydown", (event) => {
+        if (isTestFinished) return;
+
+        const key = event.key;
+
+        // Старт таймера при першому натисканні
+        if (startTime === null) {
+            startTime = new Date();
+            timerInterval = setInterval(updateTimer, 1000); // Оновлювати кожну секунду
+            setTimeout(finishTest, maxTime * 1000); // Закінчення тесту через 30 секунд
+        }
+
+        console.log("Клавіша натиснута:", key);
+
+        // Обробка Backspace
+        if (key === "Backspace") {
+            console.log("Backspace натиснуто");
+            if (currentIndex > 0) {
+                currentIndex--;
+                const span = document.getElementById(`letter-${currentIndex}`);
+                span.style.color = "black"; // Повернення кольору до чорного
+                typedCharacters.pop(); // Видаляємо останній символ
+                updateAccuracy();
+            }
+            return;
+        }
+
+        // Ігнорувати інші непотрібні клавіші
+        if (key.length > 1) {
+            return;
+        }
+
+        // Обробка символів
+        const currentLetter = text[currentIndex];
+        const span = document.getElementById(`letter-${currentIndex}`);
+
+        if (key === currentLetter) {
+            span.style.color = "green"; // Правильна буква
+            typedCharacters.push({ char: key, correct: true });
+        } else {
+            span.style.color = "red"; // Неправильна буква
+            errorCount++;
+            errorCountSpan.textContent = errorCount;
+            typedCharacters.push({ char: key, correct: false });
+        }
+
+        currentIndex++;
+
+        // Якщо ввели весь текст, завершити тест
+        if (currentIndex >= text.length) {
+            finishTest();
+        }
+
+        updateAccuracy();
+    });
+
+    function updateAccuracy() {
+        const correctCount = typedCharacters.filter((item) => item.correct).length;
+        const totalTyped = typedCharacters.length;
+        const accuracy = totalTyped > 0 ? ((correctCount / totalTyped) * 100).toFixed(2) : 100;
+        accuracySpan.textContent = accuracy;
     }
-  });
 
-  function updateAccuracy() {
-    const accuracy = ((correctCount / (correctCount + errorCount)) * 100).toFixed(2);
-    accuracySpan.textContent = accuracy;
-  }
+    function updateTimer() {
+        if (timeLeft <= 0) return; // Якщо час вичерпано, не оновлювати
 
-  function updateTimer() {
-    const elapsedTime = ((new Date() - startTime) / 1000).toFixed(2);
-    timerSpan.textContent = elapsedTime;
-  }
+        timeLeft--;
+        console.log("Час залишився:", timeLeft);
+        timerSpan.textContent = timeLeft;
+    }
+
+    function finishTest() {
+        if (isTestFinished) return;
+
+        isTestFinished = true;
+        clearInterval(timerInterval);
+
+        const correctCount = typedCharacters.filter((item) => item.correct).length;
+        const totalTyped = typedCharacters.length;
+        const accuracy = totalTyped > 0 ? ((correctCount / totalTyped) * 100).toFixed(2) : 100;
+
+        const wordsTyped = totalTyped / 5; // Вважаємо, що слово = 5 символів
+        const wordsPerSecond = (wordsTyped / maxTime).toFixed(2);
+
+        alert(`
+          Час вичерпано!
+          Помилок: ${errorCount}
+          Точність: ${accuracy}%
+          Швидкість: ${wordsPerSecond} слів/секунду
+        `);
+    }
 }

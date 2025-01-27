@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,22 +9,13 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Підключення CSS -->
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to the Typing Test</h1>
-    <p>Select a text to start the typing test:</p>
-    <div class="cards">
-      <div class="card">
-        <a href="{% url 'test' %}?text=The quick brown fox jumps over the lazy dog and runs away quickly, showing off its speed and agility. This sentence contains all the letters of the alphabet.">The Quick Brown Fox</a>
-      </div>
-      <div class="card">
-        <a href="{% url 'test' %}?text=Once upon a time, in a land far, far away, there was a kingdom ruled by a wise and kind king. The people loved him dearly, and they lived peacefully under his rule.">Once Upon a Time</a>
-      </div>
-      <div class="card">
-        <a href="{% url 'test' %}?text=Learning to code can be an exciting journey. It takes practice, patience, and perseverance, but the rewards are worth the effort. Many people find joy in creating programs and solving problems through programming.">Learning to Code</a>
-      </div>
-    </div>
-  </div>
 
+
+{% block content %}
+    <h2>Welcome to the Typing Test!</h2>
+    <p>Click below to start your typing test.</p>
+    <a href="/test">Start Test</a>
+{% endblock %}
   <script src="{% static 'js/script.js' %}"></script> <!-- Підключення JavaScript -->
 </body>
 </html>

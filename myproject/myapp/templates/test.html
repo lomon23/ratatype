@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,27 +9,25 @@
   <link rel="stylesheet" href="{% static 'css/test.css' %}">
 </head>
 <body>
+
+{% block content %}
   <div class="test-container">
-    <h1>Text Typing Test</h1>
-
-    <div id="text-container">
-      <p>{{ text }}</p>
+        <h1>Typing Test</h1>
+        <div id="text-container" class="text-box"></div> <!-- Текст для введення -->
+        <div class="stats">
+            <div class="stat-box">
+                <p>Помилки: <span id="error-count">0</span></p>
+            </div>
+            <div class="stat-box">
+                <p>Точність: <span id="accuracy">100</span>%</p>
+            </div>
+            <div class="stat-box">
+                <p>Час: <span id="timer">0.00</span> сек</p>
+            </div>
+        </div>
     </div>
+{% endblock %}
 
-    <div class="info-container">
-      <div class="info-box">
-        <p>Errors: <span id="error-count">0</span></p>
-      </div>
-      <div class="info-box">
-        <p>Accuracy: <span id="accuracy">100</span>%</p>
-      </div>
-      <div class="info-box">
-        <p>Time: <span id="timer">0.00</span> seconds</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Підключення JavaScript -->
-  <script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

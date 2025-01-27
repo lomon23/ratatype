@@ -1,45 +1,44 @@
+/* Основні стилі для сторінки */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif; /* Вибір шрифта */
+    background-color: #f0f0f0; /* Легкий фон */
+    color: #333; /* Текст темного кольору */
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-
-  .container {
+    height: 100vh; /* Повна висота екрану */
     text-align: center;
-  }
+}
 
-  h1 {
-    font-size: 2em;
+/* Контейнер для основного контенту */
+h2 {
+    font-size: 36px;
+    color: #333;
     margin-bottom: 20px;
-  }
+}
 
-  .cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
 
-  .card {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 200px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-
-  .card:hover {
-    transform: scale(1.1);
-  }
-
-  .card a {
+/* Стилі для кнопки */
+a {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
     text-decoration: none;
     color: white;
-    font-size: 1.2em;
-  }
+    background-color: #4CAF50; /* Зелений фон */
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* При наведенні на кнопку */
+a:hover {
+    background-color: #45a049; /* Темніший зелений */
+}
+

@@ -1,47 +1,57 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #e5e5e5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    text-align: center;
-  }
+/* Основний контейнер для тесту */
+.test-container {
+    width: 80%; /* Ширина контейнера */
+    max-width: 900px; /* Максимальна ширина */
+    margin: 50px auto; /* Центруємо по горизонталі */
+    text-align: center; /* Текст по центру */
+    padding: 20px;
+    background-color: #fffff; /* Легкий фон */
+    border-radius: 15px; /* Заокруглені краї */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тінь для ефекту */
+}
 
-  .test-container {
-    background-color: white;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  h1 {
-    font-size: 2em;
+h1 {
+    font-size: 32px;
+    color: #333;
     margin-bottom: 20px;
-  }
+}
 
-  #text-container {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
+/* Текстовий контейнер для введення */
+.text-box {
+    width: 100%;
+    height: 300px; /* Висота контейнера для тексту */
+    margin-bottom: 30px; /* Відступ від статистики */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px; /* Заокруглені краї */
+    border: 2px solid #ddd;
+    font-size: 18px;
+    color: #333;
+    overflow-y: auto; /* Якщо текст не поміщається, буде скрол */
+}
 
-  .info-container {
+/* Стилі для статистики */
+.stats {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 20px;
-  }
+}
 
-  .info-box {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 30px;
+.stat-box {
+    width: 30%; /* Кожен блок займає 30% ширини */
+    padding: 15px;
+    background-color: #fff;
     border-radius: 10px;
-    width: 150px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Легка тінь */
+}
 
-  .info-box p {
-    margin: 0;
-  }
+.stat-box p {
+    font-size: 18px;
+    color: #333;
+}
+
+.stat-box span {
+    font-weight: bold;
+    color: #ffcc00; /* Колір для значень */
+}
